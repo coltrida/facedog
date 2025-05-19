@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('prova');
-})->name('home');
+})->name('home');*/
+
+Route::get('/', \App\Livewire\Home::class)->name('home');
+
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
