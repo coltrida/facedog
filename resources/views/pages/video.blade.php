@@ -1,4 +1,4 @@
 @extends('components.layouts.stile')
 @section('content')
-    <livewire:home />
+    <h1>video</h1>
 @endsection

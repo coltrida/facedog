@@ -1,4 +1,5 @@
 @extends('components.layouts.stile')
 @section('content')
-    <livewire:home />
+    <livewire:new-post />
 @endsection
+
