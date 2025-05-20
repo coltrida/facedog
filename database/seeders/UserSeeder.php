@@ -18,18 +18,21 @@ class UserSeeder extends Seeder
             [
                 'name' => 'admin',
                 'role' => 'admin',
+                'description' => '',
                 'email' => 'admin@admin.it',
                 'password' => Hash::make('123456')
             ],
             [
                 'name' => 'cacao',
                 'role' => 'user',
+                'description' => 'sono un gattino birichino',
                 'email' => 'cacao@cacao.it',
                 'password' => Hash::make('123456')
             ],
             [
                 'name' => 'cacao2',
                 'role' => 'user',
+                'description' => 'sono un cane feroce',
                 'email' => 'cacao2@cacao.it',
                 'password' => Hash::make('123456')
             ],

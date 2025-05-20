@@ -134,7 +134,7 @@
                         {{auth()->user()->name}}
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item" href="{{route('myProfile')}}">My Profile</a></li>
                         <li>
                             <a class="dropdown-item" href="#">
                                 <form method="POST" action="{{ route('logout') }}" class="w-full">
