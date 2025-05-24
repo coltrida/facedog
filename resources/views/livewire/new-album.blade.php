@@ -1,13 +1,16 @@
 <div>
-    <h1>New Post</h1>
+    <div class="d-flex">
+        <h1>New Album</h1>
+        <a title="add photo" aria-current="page" href="#" wire:click="addNumberOfPhoto">
+            <i class="bi bi-plus-circle"></i>
+        </a>
+    </div>
+
     <div class="my-4">
-        <label for="title" class="form-label">Post title</label>
+        <label for="title" class="form-label">Album title</label>
         <input type="text" wire:model="title" class="form-control" id="title">
     </div>
-    <div class="mb-4">
-        <label for="body" class="form-label">Post Body</label>
-        <textarea wire:model="body" class="form-control" id="body" rows="3"></textarea>
-    </div>
+    @for($i = 0; $i < $numberOfPhoto; $i ++)
     <div class="mb-5">
         <div class="row">
             <div class="col">
@@ -23,7 +26,8 @@
             </div>
         </div>
     </div>
-    <button wire:click="salvaPost" class="btn btn-primary">Submit</button>
+    @endfor
+    <button wire:click="salvaAlbum" class="btn btn-primary">Submit</button>
 </div>
 
 @script
@@ -40,3 +44,4 @@
 
 </script>
 @endscript
+

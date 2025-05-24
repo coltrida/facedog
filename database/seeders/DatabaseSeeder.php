@@ -27,10 +27,12 @@ class DatabaseSeeder extends Seeder
         Storage::disk('public')->deleteDirectory('/posts/');
         Storage::disk('public')->deleteDirectory('/posts/');
         Storage::disk('public')->deleteDirectory('/albums/');
+        Storage::disk('public')->deleteDirectory('/profiles/');
         Storage::disk('public')->deleteDirectory('/livewire-tmp/');
         Storage::disk('public')->makeDirectory('/users');
         Storage::disk('public')->makeDirectory('/posts');
         Storage::disk('public')->makeDirectory('/albums');
+        Storage::disk('public')->makeDirectory('/profiles');
         Storage::disk('public')->makeDirectory('/livewire-tmp');
     }
 }

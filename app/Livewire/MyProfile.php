@@ -10,7 +10,7 @@ class MyProfile extends Component
     public function render(UserService $userService)
     {
         return view('livewire.my-profile', [
-            'myPosts' => $userService->myPosts()
+            'myPosts' => $userService->mylastPosts()
         ]);
     }
 }
