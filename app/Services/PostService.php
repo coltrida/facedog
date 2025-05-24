@@ -7,9 +7,9 @@ use App\Models\User;
 
 class PostService
 {
-    public function listPost()
+    public function listPostPaginate($page)
     {
-        return Post::latest()->get();
+        return Post::latest()->paginate(6, ['*'], 'page', $page);
     }
 
     public function savePost($request)

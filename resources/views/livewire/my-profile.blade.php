@@ -17,6 +17,9 @@
                         <h5 class="card-title">{{ $album->title }}</h5>
                         <a href="#" class="btn btn-primary mt-auto">Go to album</a>
                     </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Created: {{$album->created_at->diffForHumans()}}</small>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -34,6 +37,9 @@
                         <p class="card-text flex-grow-1">{{ \Illuminate\Support\Str::limit($post->body, 80, '...') }}</p>
                         <a href="#" class="btn btn-primary mt-auto">Go to post</a>
                     </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Created: {{$post->created_at->diffForHumans()}}</small>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -44,7 +50,7 @@
         <script>
             Swal.fire({
                 title: 'Fatto!',
-                text: 'aggiornato',
+                text: '{{session('status')}}',
                 icon: 'success',
                 timer: 2000,
                 showConfirmButton: false
@@ -55,7 +61,7 @@
 
 </div>
 
-@script
+{{--@script
 <script>
     Livewire.on('mostraMessaggio', message => {
         Swal.fire({
@@ -67,4 +73,4 @@
         });
     });
 </script>
-@endscript
+@endscript--}}
