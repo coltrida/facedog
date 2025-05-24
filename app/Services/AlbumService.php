@@ -18,4 +18,21 @@ class AlbumService
             $a->latest()->take(3);
         }])->find($idUser)->albums;
     }
+
+    public function myAlbums($idUser)
+    {
+        return User::with(['albums' => function($a){
+            $a->latest();
+        }])->find($idUser)->albums;
+    }
+
+    public function album($idAlbum)
+    {
+        return Album::find($idAlbum);
+    }
+
+    public function deleteAlbum($idAlbum)
+    {
+        return Album::find($idAlbum)->delete();
+    }
 }

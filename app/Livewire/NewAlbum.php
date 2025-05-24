@@ -14,15 +14,9 @@ class NewAlbum extends Component
     use WithFileUploads;
 
     public $title;
-    public $numberOfPhoto = 0;
 
-    #[Validate('image|max:2048')] // 2MB Max
+    #[Validate(['photo.*' => 'image|max:2048'])]
     public $photo = [];
-
-    public function addNumberOfPhoto()
-    {
-        $this->numberOfPhoto ++;
-    }
 
     public function salvaAlbum(AlbumService $albumService)
     {
@@ -41,7 +35,7 @@ class NewAlbum extends Component
                 $filename = $nrPhotoInCartellaAlbum . '.' . $pic->extension();
                 $pic->storeAs('albums/'.$idCartellaAlbum, $filename);
             }
-            $this->reset(['title', 'numberOfPhoto', 'photo']);
+            $this->reset(['title', 'photo']);
             session()->flash('status', 'Album Created.');
             $this->redirectRoute('myProfile');
         }

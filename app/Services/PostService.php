@@ -23,4 +23,21 @@ class PostService
             $p->latest()->take(3);
         }])->find($idUser)->posts;
     }
+
+    public function myPosts($idUser)
+    {
+        return User::with(['posts' => function($p){
+            $p->latest();
+        }])->find($idUser)->posts;
+    }
+
+    public function post($idPost)
+    {
+        return Post::find($idPost);
+    }
+
+    public function deletePost($idPost)
+    {
+        return Post::find($idPost)->delete();
+    }
 }

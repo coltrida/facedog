@@ -12,18 +12,25 @@
         <div class="row">
             <div class="col">
                 <label for="formFile" class="form-label">photo</label>
-                <input wire:model="photo" class="form-control" type="file" id="formFile">
+                <input wire:model="photo" class="form-control" type="file" id="formFile" multiple accept="image/jpeg">
+                <button wire:click="salvaPost" class="btn btn-primary mt-3">Submit</button>
             </div>
             <div class="col text-center">
-                @if($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" class="rounded border border-gray-300" width="300" alt="preview">
+                @if(count($photo) > 0 )
+                    <div class="row">
+                        @foreach($photo as $pic)
+                            <div class="col">
+                                <img src="{{ $pic->temporaryUrl() }}" class="rounded border border-gray-300" width="150" alt="preview">
+                            </div>
+                        @endforeach
+                    </div>
                 @else
                     <img src="{{ asset('/img/placeholder-image.png') }}" class="rounded border border-gray-300" width="200" alt="preview">
                 @endif
             </div>
         </div>
     </div>
-    <button wire:click="salvaPost" class="btn btn-primary">Submit</button>
+
 </div>
 
 {{--@script

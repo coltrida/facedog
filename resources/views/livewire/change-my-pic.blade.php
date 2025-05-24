@@ -1,6 +1,10 @@
 <div>
-    <h2 class="mt-5">My photo</h2>
-    <div class="row">
+    <div class="d-flex justify-content-between">
+        <h2 class="card-title">My photo</h2>
+        <a href="#" onclick="history.back()" class="btn btn-primary">back</a>
+    </div>
+
+    <div class="row mt-3">
         <div class="col">
             <label for="formFile" class="form-label">photo</label>
             <input wire:model="photo" class="form-control" type="file" id="formFile">

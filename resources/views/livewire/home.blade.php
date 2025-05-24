@@ -1,19 +1,19 @@
-<div class="container my-5">
+<div class="container my-2">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2 class="text-center mb-4">My Awesome Posts</h2>
+            <h2 class="text-center mb-4">Last Posts</h2>
 
             {{-- Display posts --}}
             <div class="posts-list">
                 @foreach ($posts as $post)
                     <div class="card mb-3">
-                        @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('posts/'.$post->id.'.jpg'))
-                        <img src="{{asset('/storage/posts/'.$post->id.'.jpg')}}" class="card-img-top" alt="...">
+                        @if($primafoto = \Illuminate\Support\Facades\Storage::disk('public')->files('/posts/'.$post->id)[0] ?? null)
+                            <img src="{{asset('/storage/'.$primafoto)}}" class="card-img-top" alt="...">
                         @endif
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 class="card-title">{{ $post->title }}</h5>
-                                <a href="#" class="btn btn-primary">go to post</a>
+                                <a href="{{route('post.post', $post->id)}}" class="btn btn-primary">go to post</a>
                             </div>
 
                             <p class="card-text">{{ \Illuminate\Support\Str::limit($post->body, 50, '...') }}</p>

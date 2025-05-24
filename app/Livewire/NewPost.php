@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -15,8 +16,8 @@ class NewPost extends Component
     public $title;
     public $body;
 
-    #[Validate('image|max:2048')] // 2MB Max
-    public $photo;
+    #[Validate(['photo.*' => 'image|max:2048'])]
+    public $photo = [];
 
     public function salvaPost(PostService $postService)
     {
@@ -29,11 +30,19 @@ class NewPost extends Component
 
         $post = $postService->savePost($request);
         if ($post){
-            $this->dispatch('mostraMessaggio', 'Salvataggio completato!');
 
-            if ($this->photo){
-                $filename = $post->id . '.' . $this->photo->extension();
-                $this->photo->storeAs('posts', $filename);
+            if (count($this->photo) > 0){
+                foreach ($this->photo as $pic){
+                    $idCartellaPost = $post->id;
+                    $nrPhotoInCartellaPost = Storage::disk('public')->exists('/posts/'.$idCartellaPost) ?
+                        count(Storage::disk('public')->files('/posts/'.$idCartellaPost)) + 1 : 1;
+                    $filename = $nrPhotoInCartellaPost . '.' . $pic->extension();
+                    $pic->storeAs('posts/'.$idCartellaPost, $filename);
+                }
+
+
+                /*$filename = $post->id . '.' . $this->photo->extension();
+                $this->photo->storeAs('posts', $filename);*/
             }
 
             $this->reset(['title', 'body', 'photo']);
