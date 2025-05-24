@@ -30,14 +30,17 @@ class NewPost extends Component
         $post = $postService->savePost($request);
         if ($post){
             $this->dispatch('mostraMessaggio', 'Salvataggio completato!');
+
+            if ($this->photo){
+                $filename = $post->id . '.' . $this->photo->extension();
+                $this->photo->storeAs('posts', $filename);
+            }
+
+            $this->reset(['title', 'body', 'photo']);
+            session()->flash('status', 'Post Created.');
+            $this->redirectRoute('myProfile');
         }
 
-        if ($this->photo){
-            $filename = $post->id . '.' . $this->photo->extension();
-            $this->photo->storeAs('posts', $filename);
-        }
-
-        $this->reset(['title', 'body', 'photo']);
     }
 
     public function render()

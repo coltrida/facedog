@@ -9,6 +9,7 @@ Route::view('/cerca', 'pages.cerca')->name('cerca');
 Route::view('/chat', 'pages.chat')->name('chat');
 Route::view('/newPost', 'pages.newPost')->name('post.create');
 Route::view('/newAlbum', 'pages.newAlbum')->name('album.create');
+Route::view('/myAlbums', 'pages.myAlbums')->name('album.myAlbums');
 Route::view('/changeMyPic', 'pages.changeMyPic')->name('profile.change.pic');
 
 Route::view('dashboard', 'dashboard')

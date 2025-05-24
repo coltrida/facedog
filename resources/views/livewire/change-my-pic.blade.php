@@ -19,18 +19,3 @@
     </div>
     <button wire:click="salvaPhoto" class="btn btn-primary mt-3">Submit</button>
 </div>
-
-@script
-<script>
-    Livewire.on('updateMyPic', () => {
-        Swal.fire({
-            title: 'Fatto!',
-            text: 'Foto aggiornata',
-            icon: 'success',
-            timer: 2000,
-            showConfirmButton: false
-        });
-    });
-
-</script>
-@endscript

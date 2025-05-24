@@ -26,7 +26,7 @@
     <button wire:click="salvaPost" class="btn btn-primary">Submit</button>
 </div>
 
-@script
+{{--@script
 <script>
     Livewire.on('mostraMessaggio', message => {
         Swal.fire({
@@ -39,4 +39,4 @@
     });
 
 </script>
-@endscript
+@endscript--}}

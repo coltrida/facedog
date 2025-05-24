@@ -18,8 +18,8 @@
                 <input wire:model="photo" class="form-control" type="file" id="formFile">
             </div>
             <div class="col text-center">
-                @if($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" class="rounded border border-gray-300" width="300" alt="preview">
+                @if(count($photo) > 0 && isset($photo[$i]))
+                    <img src="{{ $photo[$i]->temporaryUrl() }}" class="rounded border border-gray-300" width="300" alt="preview">
                 @else
                     <img src="{{ asset('/img/placeholder-image.png') }}" class="rounded border border-gray-300" width="200" alt="preview">
                 @endif
@@ -29,19 +29,4 @@
     @endfor
     <button wire:click="salvaAlbum" class="btn btn-primary">Submit</button>
 </div>
-
-@script
-<script>
-    Livewire.on('mostraMessaggio', message => {
-        Swal.fire({
-            title: 'Fatto!',
-            text: message,
-            icon: 'success',
-            timer: 2000,
-            showConfirmButton: false
-        });
-    });
-
-</script>
-@endscript
 
