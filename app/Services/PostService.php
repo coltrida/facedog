@@ -12,6 +12,11 @@ class PostService
         return Post::latest()->paginate(6, ['*'], 'page', $page);
     }
 
+    public function listPost()
+    {
+        return Post::with('user')->latest()->get();
+    }
+
     public function savePost($request)
     {
         return Post::create($request->all());

@@ -11,7 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Reindirizza gli utenti non autenticati (middleware 'auth')
+        $middleware->redirectGuestsTo('/sign-in-advance'); // Reindirizza a un percorso specifico
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
