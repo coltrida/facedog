@@ -252,7 +252,7 @@ Header START -->
                     </a>
                 </li>
                 <li class="nav-item ms-2">
-                    <a class="nav-link bg-light icon-md btn btn-light p-0" href="settings.html">
+                    <a class="nav-link bg-light icon-md btn btn-light p-0" href="{{route('settings')}}">
                         <i class="bi bi-gear-fill fs-6"> </i>
                     </a>
                 </li>
@@ -975,7 +975,7 @@ Header END -->
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
+                        <img class="avatar-img rounded-circle" src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt="">
                     </div>
                     <!-- Feed box  -->
                     <form class="w-100">
@@ -1036,7 +1036,7 @@ Header END -->
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
+                        <img class="avatar-img rounded-circle" src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt="">
                     </div>
                     <!-- Feed box  -->
                     <form class="w-100">
@@ -1088,7 +1088,7 @@ Header END -->
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
+                        <img class="avatar-img rounded-circle" src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt="">
                     </div>
                     <!-- Feed box  -->
                     <form class="w-100">
@@ -1247,7 +1247,7 @@ JS libraries, plugins and custom scripts -->
 
 <!-- Theme Functions -->
 <script src="{{asset('assets/js/functions.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
