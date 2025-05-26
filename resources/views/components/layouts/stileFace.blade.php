@@ -238,7 +238,7 @@ Header START -->
 
                     <!-- Nav item 4 Mega menu -->
                     <li class="nav-item">
-                        <a class="nav-link" href="my-profile-connections.html">My network</a>
+                        <a class="nav-link" href="{{route('myProfile')}}">My network</a>
                     </li>
                 </ul>
             </div>
@@ -355,7 +355,8 @@ Header START -->
                                     <p class="small m-0">Web Developer</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile.html">View profile</a>
+                            <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
+                               href="{{route('myProfile')}}">View profile</a>
                         </li>
                         <!-- Links -->
                         <li><a class="dropdown-item" href="{{route('settings')}}"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>

@@ -8,11 +8,10 @@ use Livewire\Component;
 
 class MyProfile extends Component
 {
-    public function render(PostService $postService, AlbumService $albumService)
+
+
+    public function render()
     {
-        return view('livewire.my-profile', [
-            'myPosts' => $postService->mylastPosts(auth()->id()),
-            'myLastAlbums' => $albumService->myLastAlbums(auth()->id())
-        ]);
+        return view('livewire.my-profile');
     }
 }

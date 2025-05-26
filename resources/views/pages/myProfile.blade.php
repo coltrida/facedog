@@ -1,4 +1,4 @@
-@extends('components.layouts.stile')
+@extends('components.layouts.stileFace')
 @section('content')
     <livewire:my-profile />
 @endsection
