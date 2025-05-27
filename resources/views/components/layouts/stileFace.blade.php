@@ -105,7 +105,7 @@ Header START -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <!-- Logo START -->
-            <a class="navbar-brand" href="{{route('home')}}" >
+            <a class="navbar-brand" href="{{route('home')}}">
                 <img class="light-mode-item navbar-brand-item" src="{{asset('assets/images/logo.svg')}}" alt="logo">
                 <img class="dark-mode-item navbar-brand-item" src="{{asset('assets/images/logo.svg')}}" alt="logo">
             </a>
@@ -238,7 +238,7 @@ Header START -->
 
                     <!-- Nav item 4 Mega menu -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('myProfile')}}">My network</a>
+                        <a class="nav-link" href="{{route('myProfile.posts')}}" >My network</a>
                     </li>
                 </ul>
             </div>
@@ -356,7 +356,7 @@ Header START -->
                                 </div>
                             </div>
                             <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
-                               href="{{route('myProfile')}}">View profile</a>
+                               href="{{route('myProfile.posts')}}" >View profile</a>
                         </li>
                         <!-- Links -->
                         <li><a class="dropdown-item" href="{{route('settings')}}"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>

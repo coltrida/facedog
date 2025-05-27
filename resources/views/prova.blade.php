@@ -2038,7 +2038,7 @@ Header END -->
                             <!-- Card header END -->
                             <!-- Card body START -->
                             <div class="card-body">
-                                <!-- Connection item START -->
+                                <!-- Connections item START -->
                                 <div class="hstack gap-2 mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar">
@@ -2052,8 +2052,8 @@ Header END -->
                                     <!-- Button -->
                                     <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="fa-solid fa-plus"> </i></a>
                                 </div>
-                                <!-- Connection item END -->
-                                <!-- Connection item START -->
+                                <!-- Connections item END -->
+                                <!-- Connections item START -->
                                 <div class="hstack gap-2 mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar avatar-story">
@@ -2067,9 +2067,9 @@ Header END -->
                                     <!-- Button -->
                                     <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="fa-solid fa-plus"> </i></a>
                                 </div>
-                                <!-- Connection item END -->
+                                <!-- Connections item END -->
 
-                                <!-- Connection item START -->
+                                <!-- Connections item START -->
                                 <div class="hstack gap-2 mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar">
@@ -2083,9 +2083,9 @@ Header END -->
                                     <!-- Button -->
                                     <a class="btn btn-primary rounded-circle icon-md ms-auto" href="#"><i class="bi bi-person-check-fill"> </i></a>
                                 </div>
-                                <!-- Connection item END -->
+                                <!-- Connections item END -->
 
-                                <!-- Connection item START -->
+                                <!-- Connections item START -->
                                 <div class="hstack gap-2 mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar">
@@ -2099,9 +2099,9 @@ Header END -->
                                     <!-- Button -->
                                     <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="fa-solid fa-plus"> </i></a>
                                 </div>
-                                <!-- Connection item END -->
+                                <!-- Connections item END -->
 
-                                <!-- Connection item START -->
+                                <!-- Connections item START -->
                                 <div class="hstack gap-2 mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar">
@@ -2115,7 +2115,7 @@ Header END -->
                                     <!-- Button -->
                                     <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i class="fa-solid fa-plus"> </i></a>
                                 </div>
-                                <!-- Connection item END -->
+                                <!-- Connections item END -->
 
                                 <!-- View more button -->
                                 <div class="d-grid mt-3">

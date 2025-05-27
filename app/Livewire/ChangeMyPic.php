@@ -21,7 +21,7 @@ class ChangeMyPic extends Component
             $this->photo->storeAs('profiles', $filename);
 
             $this->dispatch('updateMyPic');
-            session()->flash('status', 'photo profile changed.');
+            session()->flash('status', 'photo myProfile changed.');
             $this->redirectRoute('myProfile');
         }
     }

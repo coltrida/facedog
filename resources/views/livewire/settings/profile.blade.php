@@ -20,7 +20,7 @@ new class extends Component {
     }
 
     /**
-     * Update the profile information for the currently authenticated user.
+     * Update the myProfile information for the currently authenticated user.
      */
     public function updateProfileInformation(): void
     {
@@ -47,7 +47,7 @@ new class extends Component {
 
         $user->save();
 
-        $this->dispatch('profile-updated', name: $user->name);
+        $this->dispatch('myProfile-updated', name: $user->name);
     }
 
     /**
