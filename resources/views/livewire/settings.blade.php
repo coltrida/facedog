@@ -70,7 +70,7 @@
                             <!-- Card body END -->
                             <!-- Card footer -->
                             <div class="card-footer text-center py-2">
-                                <a class="btn btn-link text-secondary btn-sm" href="#!">View Profile </a>
+                                <a class="btn btn-link text-secondary btn-sm" href="{{route('myProfile.posts')}}">View Profile </a>
                             </div>
                         </div>
                         <!-- Card END -->
@@ -97,8 +97,8 @@
                     </ul>
                     <!-- Helper link END -->
                     <!-- Copyright -->
-                    <p class="small text-center mt-1">©2024 <a class="text-reset" target="_blank"
-                                                               href="https://stackbros.in/"> StackBros </a></p>
+                    <p class="small text-center mt-1">©2014 <a class="text-reset" target="_blank"
+                                                               href="#"> ColtriCat </a></p>
 
                 </div>
             </nav>
@@ -137,6 +137,11 @@
                                     <label class="form-label">Last name</label>
                                     <input type="text" class="form-control" wire:model="surname" placeholder="">
                                 </div>
+                                <!-- Type -->
+                                <div class="col-sm-6 col-lg-4">
+                                    <label class="form-label">Type</label>
+                                    <input type="text" class="form-control" wire:model="type" placeholder="">
+                                </div>
                                 <!-- User name -->
                                 <div class="col-sm-6">
                                     <label class="form-label">User name</label>
@@ -171,7 +176,7 @@
                                 </div>
                                 <!-- Page information -->
                                 <div class="col-12">
-                                    <label class="form-label">Overview</label>
+                                    <label class="form-label">Description</label>
                                     <textarea class="form-control" rows="4" wire:model="description" placeholder="Description (Required)"></textarea>
                                     <small>Character limit: 300</small>
                                 </div>

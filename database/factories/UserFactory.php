@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -27,7 +28,10 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'surname' => fake()->name(),
             'username' => fake()->name(),
+            'type' => Arr::random(['gatto rosso', 'pesce rosso', 'cane boxer', 'topo grigio',
+                'cane lessie', 'cane bassotto', 'gatto felix', 'gatto persiano', 'cane ciuaua', 'gatto nero']),
             'birthdate' => fake()->date(),
+            'description' => fake()->realText(50),
             'phone' => fake()->phoneNumber(),
             'role' => 'user',
             'email' => fake()->unique()->safeEmail(),

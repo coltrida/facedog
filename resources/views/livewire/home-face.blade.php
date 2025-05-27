@@ -33,15 +33,19 @@
                                     <!-- Avatar -->
                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                         <a href="#!">
-                                            <img class="avatar-img rounded border border-white border-3"
-                                                 src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt=""
+                                            <img class="avatar-img rounded border border-gray-300"
+                                                 @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
+                                                    src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt=""
+                                                 @else
+                                                     src="{{asset('/img/user.png')}}"
+                                                @endif
                                             >
                                         </a>
                                     </div>
                                     <!-- Info -->
                                     <h5 class="mb-0"> <a href="#!">{{auth()->user()->name}} </a> </h5>
-                                    <small>Web Developer at StackBros</small>
-                                    <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
+                                    <small>{{auth()->user()->type}}</small>
+                                    <p class="mt-3">{{auth()->user()->description}}</p>
 
                                     <!-- User stat START -->
                                     <div class="hstack gap-2 gap-xl-3 justify-content-center">

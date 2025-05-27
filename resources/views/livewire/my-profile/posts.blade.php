@@ -4,7 +4,7 @@
         <!-- Main content START -->
         <div class="col-lg-8 vstack gap-4">
             <!-- My profile START -->
-            @include('partials.my-profile-nav-bar')
+            <livewire:component.my-profile-nav-bar />
             <!-- My profile END -->
 
             <!-- Share feed START -->
