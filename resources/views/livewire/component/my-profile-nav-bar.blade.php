@@ -1,5 +1,18 @@
 <div class="card">
-    <div class="h-200px rounded-top" style="background-image:url(assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+    <div class="position-relative">
+        <div class="h-200px rounded-top"
+             style="{{\Illuminate\Support\Facades\Storage::disk('public')->exists('/landscapes/'.auth()->user()->id.'.jpg') ?
+                    'background-image:url(/storage/landscapes/'.auth()->id().'.jpg?v='.$version.');' : 'background-image:url(/img/mare.jpg);'}}
+
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                "></div>
+
+        <a type="button" class="btn btn-primary position-absolute top-0 end-0 mt-3 me-3"
+           href="#" data-bs-toggle="modal" data-bs-target="#modalChangeLandscapePhoto">
+            <i class="bi bi-pencil-fill pe-1"></i> Change Landscape Photo </a>
+    </div>
     <!-- Card body START -->
     <div class="card-body py-0">
         <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -7,7 +20,11 @@
                 <!-- Avatar -->
                 <div class="avatar avatar-xxl mt-n5 mb-3">
                     <img class="avatar-img rounded-circle border border-white border-3"
-                         src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt="">
+                         @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
+                            src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt="">
+                         @else
+                            src="{{asset('/img/user.png')}}"
+                         @endif
                 </div>
             </div>
             <div class="ms-sm-4 mt-sm-3">
@@ -17,7 +34,8 @@
             </div>
             <!-- Button -->
             <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                <a class="btn btn-primary-soft" href="#" data-bs-toggle="modal" data-bs-target="#modalCreateAlbum"> <i class="bi bi-pencil-fill pe-1"></i> Change Photo</a>
+                <a class="btn btn-primary-soft" href="#" data-bs-toggle="modal" data-bs-target="#modalChangeProfilePhoto">
+                    <i class="bi bi-pencil-fill pe-1"></i> Change Profile Photo</a>
             </div>
         </div>
         <!-- List myProfile -->
@@ -46,28 +64,39 @@
         </ul>
     </div>
 
-
-
-    <!-- Modal create album START -->
-    <div class="modal fade" id="modalCreateAlbum" tabindex="-1" aria-labelledby="modalLabelCreateAlbum" aria-hidden="true">
+    <!-- Modal change Profile Photo START -->
+    <div class="modal fade" id="modalChangeProfilePhoto" tabindex="-1" aria-labelledby="modalLabelChangeProfilePhoto" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal header -->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabelCreateAlbum">Create album</h5>
+                    <h5 class="modal-title" id="modalLabelChangeProfilePhoto">Change Profile Photo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form wire:submit.prevent="save">
+                <form wire:submit="saveProfilePhoto">
                     <div class="modal-body">
                     <!-- Form START -->
                         <!-- Upload Photos or Videos -->
                         <div class="mb-3">
+                            <div
+                                x-data="{ uploading: false, progress: 0 }"
+                                x-on:livewire-upload-start="uploading = true"
+                                x-on:livewire-upload-finish="uploading = false"
+                                x-on:livewire-upload-cancel="uploading = false"
+                                x-on:livewire-upload-error="uploading = false"
+                                x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
                             <!-- Dropzone photo START -->
                             <label class="form-label">Upload Photos or Videos</label>
-                            <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
+                            {{--<div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
                                 <div class="dz-message">
                                     <i class="fa-solid fa-folder-open display-3"></i>
                                     <p>Drop image here or click to upload.</p>
+                                </div>
+                            </div>--}}
+                            <input type="file" class="form-control" wire:model="photo" placeholder="">
+                                <div x-show="uploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
                                 </div>
                             </div>
                             <!-- Dropzone photo END -->
@@ -76,12 +105,67 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success-soft">Update Main Photo</button>
+                        @if($photo)
+                            <img src="{{$photo->temporaryUrl()}}" alt="" class="rounded" >
+                        @endif
+                        <button type="submit" class="btn btn-success-soft" data-bs-dismiss="modal">Update Profile Photo</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Modal create album END -->
+    <!-- Modal change Profile Photo END -->
+
+    <!-- Modal change Profile Photo START -->
+    <div class="modal fade" id="modalChangeLandscapePhoto" tabindex="-1" aria-labelledby="modalLabelChangeLandscape" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabelChangeLandscape">Change Landscape Photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form wire:submit="saveLandscapePhoto">
+                    <div class="modal-body">
+                        <!-- Form START -->
+                        <!-- Upload Photos or Videos -->
+                        <div class="mb-3">
+                            <div
+                                x-data="{ uploading: false, progress: 0 }"
+                                x-on:livewire-upload-start="uploading = true"
+                                x-on:livewire-upload-finish="uploading = false"
+                                x-on:livewire-upload-cancel="uploading = false"
+                                x-on:livewire-upload-error="uploading = false"
+                                x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
+                                <!-- Dropzone photo START -->
+                                <label class="form-label">Upload Photos or Videos</label>
+                                {{--<div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
+                                    <div class="dz-message">
+                                        <i class="fa-solid fa-folder-open display-3"></i>
+                                        <p>Drop image here or click to upload.</p>
+                                    </div>
+                                </div>--}}
+                                <input type="file" class="form-control" wire:model="photoLandscape" placeholder="">
+                                <div x-show="uploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
+                                </div>
+                            </div>
+                            <!-- Dropzone photo END -->
+                        </div>
+                        <!-- Form END -->
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        @if($photoLandscape)
+                            <img src="{{$photoLandscape->temporaryUrl()}}" alt="" class="rounded" >
+                        @endif
+                        <button type="submit" class="btn btn-success-soft" data-bs-dismiss="modal">Update Landscape Photo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal change Profile Photo END -->
 </div>
 

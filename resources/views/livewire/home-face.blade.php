@@ -35,7 +35,7 @@
                                         <a href="#!">
                                             <img class="avatar-img rounded border border-gray-300"
                                                  @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
-                                                    src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt=""
+                                                    src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt=""
                                                  @else
                                                      src="{{asset('/img/user.png')}}"
                                                 @endif
@@ -161,7 +161,8 @@
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
-                        <a href="#"> <img class="avatar-img rounded-circle" src="{{asset('storage/profiles/'.auth()->id().'.jpg')}}" alt=""> </a>
+                        <a href="#"> <img class="avatar-img rounded-circle"
+                                          src="{{asset('storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt=""> </a>
                     </div>
                     <!-- Post input -->
                     <form class="w-100">
@@ -280,7 +281,8 @@
                     <div class="d-flex mb-3">
                         <!-- Avatar -->
                         <div class="avatar avatar-xs me-2">
-                            <a href="#!"> <img class="avatar-img rounded-circle" src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}" alt=""> </a>
+                            <a href="#!"> <img class="avatar-img rounded-circle"
+                                               src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt=""> </a>
                         </div>
                         <!-- Comment box  -->
                         <form class="nav nav-item w-100 position-relative">
