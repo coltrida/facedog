@@ -2,11 +2,7 @@
     <li class="nav-item ms-2 dropdown">
         <a class="nav-link bg-light icon-md btn btn-light p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="avatar-img rounded-2 border border-gray-300"
-                 @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
-                    src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt="">
-                 @else
-                    src="{{asset('/img/user.png')}}"
-                 @endif
+                 src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
         </a>
         <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
             <!-- Profile info -->
@@ -15,11 +11,7 @@
                     <!-- Avatar -->
                     <div class="avatar me-3">
                         <img class="avatar-img rounded-circle border border-gray-300"
-                             @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
-                                src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt="avatar">
-                             @else
-                                src="{{asset('/img/user.png')}}"
-                             @endif
+                             src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
                     </div>
                     <div>
                         <a class="h6 stretched-link" href="#">{{auth()->user()->name}}</a>

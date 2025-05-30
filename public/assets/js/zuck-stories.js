@@ -26,7 +26,7 @@ let stories = new Zuck("stories", {
   cubeEffect: true,     // enables the 3d cube effect when sliding story
   backButton: true,     // adds a back button to close the story viewer
   /* IMP - turn this reactive: FALSE or leave it commented if not using any framework */
-  // reactive: true,    // set true if you use frameworks like React to control the timeline 
+  // reactive: true,    // set true if you use frameworks like React to control the timeline
   rtl: false,           // enable/disable RTL
   localStorage: true,   // set true to save "seen" position. Element must have a id to save properly.
   stories: [
@@ -35,10 +35,10 @@ let stories = new Zuck("stories", {
     Zuck.buildTimelineItem(
       // story id
       "user-1",
-      
+
       // Story photo src
-      "assets/images/post/1by1/02.jpg",
-      
+      "assets/images/post/1by1/2.jpg",
+
       // Story name (or user name)
       "Judy Nguyen",
 
@@ -49,12 +49,12 @@ let stories = new Zuck("stories", {
       // Story items
       [
         // item [id, photo/video, length(sec), src, preview, link, linkText, time, seen(true/false)]
-        ["user1-story1", "photo", 5, "assets/images/albums/01.jpg", "", '', false, false, timestamp()],
+        ["user1-story1", "photo", 5, "assets/images/albums/1.jpg", "", '', false, false, timestamp()],
         ["user1-story2", "video", 0, "assets/images/videos/video-call.mp4", "", '', false, false, timestamp()],
-        ["user1-story3", "photo", 5, "assets/images/albums/02.jpg", "", 'https://stackbros.in/', 'Visit my Portfolio', false, timestamp()]
+        ["user1-story3", "photo", 5, "assets/images/albums/2.jpg", "", 'https://stackbros.in/', 'Visit my Portfolio', false, timestamp()]
       ]
     ),
-    
+
     // Story (First way)
     Zuck.buildTimelineItem(
       "user-2",
@@ -66,7 +66,7 @@ let stories = new Zuck("stories", {
         ["user2-story1", "photo", 5, "assets/images/albums/03.jpg", "", '', false, false, timestamp()],
       ]
     ),
-    
+
     // Story item (First way)
     Zuck.buildTimelineItem(
       "user-3",
@@ -125,7 +125,7 @@ let stories = new Zuck("stories", {
       seen: false,          // set true if user has opened
 
       items: [              // array of items
-        // Story item 
+        // Story item
         {
           id: "user7-story1",       // item id
           type: "photo",      // photo or video

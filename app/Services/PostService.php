@@ -22,11 +22,16 @@ class PostService
         return Post::create($request->all());
     }
 
-    public function myLastPosts($idUser)
+    public function myPostsWithComments($idUser)
     {
         return User::with(['posts' => function($p){
-            $p->latest()->take(3);
-        }])->find($idUser)->posts;
+            $p->with(['comments' => function($c){
+                $c->with('user', 'replies');
+            }])
+                ->latest();
+        }])
+            ->find($idUser)
+            ->posts;
     }
 
     public function myPosts($idUser)

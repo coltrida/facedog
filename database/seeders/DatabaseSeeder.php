@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         ]);*/
 
         $this->call(UserSeeder::class);
+        $this->call(CommentSeeder::class);
+        $this->call(ReplySeeder::class);
 
         Storage::disk('public')->deleteDirectory('/users/');
         Storage::disk('public')->deleteDirectory('/posts/');
@@ -36,5 +38,11 @@ class DatabaseSeeder extends Seeder
         Storage::disk('public')->makeDirectory('/profiles');
         Storage::disk('public')->makeDirectory('/landscapes');
         Storage::disk('public')->makeDirectory('/livewire-tmp');
+
+
+        $fileContent = Storage::disk('local')->get('/posts/1.jpg');
+        Storage::disk('public')->put('/posts/1.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/posts/2.jpg');
+        Storage::disk('public')->put('/posts/2.jpg', $fileContent);
     }
 }

@@ -492,7 +492,7 @@
                 <div class="card-body">
                     <p class="mb-0">Quickly design and customize responsive mobile-first sites with Bootstrap.</p>
                 </div>
-                <img src="assets/images/post/3by2/02.jpg" alt="">
+                <img src="assets/images/post/3by2/2.jpg" alt="">
                 <!-- Card body END -->
                 <!-- Card footer START -->
                 <div class="card-footer border-0 d-flex justify-content-between align-items-center">
@@ -558,16 +558,16 @@
                             </div>
                             <div class="col-6">
                                 <!-- Grid img -->
-                                <a href="assets/images/post/3by2/01.jpg" data-glightbox data-gallery="image-popup">
-                                    <img class="rounded img-fluid" src="assets/images/post/3by2/01.jpg" alt="Image">
+                                <a href="assets/images/post/3by2/1.jpg" data-glightbox data-gallery="image-popup">
+                                    <img class="rounded img-fluid" src="assets/images/post/3by2/1.jpg" alt="Image">
                                 </a>
                                 <!-- Grid img -->
                                 <div class="position-relative bg-dark mt-3 rounded">
                                     <div class="hover-actions-item position-absolute top-50 start-50 translate-middle z-index-9">
                                         <a class="btn btn-link text-white" href="#"> View all </a>
                                     </div>
-                                    <a href="assets/images/post/3by2/02.jpg" data-glightbox data-gallery="image-popup">
-                                        <img class="img-fluid opacity-50 rounded" src="assets/images/post/3by2/02.jpg" alt="">
+                                    <a href="assets/images/post/3by2/2.jpg" data-glightbox data-gallery="image-popup">
+                                        <img class="img-fluid opacity-50 rounded" src="assets/images/post/3by2/2.jpg" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -1337,7 +1337,7 @@
                         <!-- Slider items -->
                         <div>
                             <!-- Card START -->
-                            <div class="card card-overlay-bottom border-0 position-relative h-150px" style="background-image:url(assets/images/post/1by1/02.jpg); background-position: center left; background-size: cover;">
+                            <div class="card card-overlay-bottom border-0 position-relative h-150px" style="background-image:url(assets/images/post/1by1/2.jpg); background-position: center left; background-size: cover;">
                                 <div class="card-img-overlay d-flex align-items-center p-2">
                                     <div class="w-100 mt-auto">
                                         <!-- Name -->
@@ -1393,7 +1393,7 @@
                         <!-- Slider items -->
                         <div>
                             <!-- Card START -->
-                            <div class="card card-overlay-bottom border-0 position-relative h-150px" style="background-image:url(assets/images/post/1by1/01.jpg); background-position: center left; background-size: cover;">
+                            <div class="card card-overlay-bottom border-0 position-relative h-150px" style="background-image:url(assets/images/post/1by1/1.jpg); background-position: center left; background-size: cover;">
                                 <div class="card-img-overlay d-flex align-items-center p-2">
                                     <div class="w-100 mt-auto">
                                         <!-- Name -->

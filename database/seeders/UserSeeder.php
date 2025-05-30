@@ -15,8 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::insert([
-            [
+        User::create([
                 'name' => 'admin',
                 'surname' => 'admin',
                 'username' => 'admin',
@@ -27,8 +26,9 @@ class UserSeeder extends Seeder
                 'description' => '',
                 'email' => 'admin@admin.it',
                 'password' => Hash::make('123456')
-            ],
-            [
+        ]);
+
+        User::factory()->hasPosts(2)->create([
                 'name' => 'davide',
                 'surname' => 'colt',
                 'username' => 'cacao',
@@ -39,8 +39,9 @@ class UserSeeder extends Seeder
                 'description' => 'sono un ferocissimo pastore tedesco che vuole conoscere tante cagnette',
                 'email' => 'cacao@cacao.it',
                 'password' => Hash::make('123456')
-            ],
-            [
+            ]);
+
+        User::factory()->hasPosts(2)->create([
                 'name' => 'mario',
                 'surname' => 'rossi',
                 'username' => 'cacao2',
@@ -51,7 +52,19 @@ class UserSeeder extends Seeder
                 'description' => 'sono un cane feroce',
                 'email' => 'cacao2@cacao.it',
                 'password' => Hash::make('123456')
-            ],
+        ]);
+
+        User::factory()->hasPosts(2)->create([
+            'name' => 'gianni',
+            'surname' => 'rivera',
+            'username' => 'cacao3',
+            'type' => 'gatto blu',
+            'birthdate' => Carbon::now(),
+            'phone' => '3387525652',
+            'role' => 'user',
+            'description' => 'sono un gatto blu',
+            'email' => 'cacao3@cacao.it',
+            'password' => Hash::make('123456')
         ]);
 
         User::factory()

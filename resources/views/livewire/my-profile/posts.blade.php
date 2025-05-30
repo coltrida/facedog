@@ -8,7 +8,7 @@
             <!-- My profile END -->
 
             <!-- Share feed START -->
-            <div class="card card-body">
+           {{-- <div class="card card-body">
                 <div class="d-flex mb-3">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs me-2">
@@ -47,9 +47,10 @@
                     </li>
                 </ul>
                 <!-- Share feed toolbar END -->
-            </div>
+            </div>--}}
             <!-- Share feed END -->
 
+            @foreach($myPosts as $post)
             <!-- Card feed item START -->
             <div class="card">
                 <!-- Card header START -->
@@ -58,19 +59,21 @@
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-story me-2">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""> </a>
+                                <a href="#!"> <img class="avatar-img rounded-circle"
+                                                   src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
+                                </a>
                             </div>
                             <!-- Info -->
                             <div>
                                 <div class="nav nav-divider">
-                                    <h6 class="nav-item card-title mb-0"> <a href="#!"> Lori Ferguson </a></h6>
-                                    <span class="nav-item small"> 2hr</span>
+                                    <h6 class="nav-item card-title mb-0"> <a href="#!"> {{auth()->user()->username}} </a></h6>
+                                    <span class="nav-item small"> {{$post->created_at->diffForHumans()}}</span>
                                 </div>
-                                <p class="mb-0 small">Web Developer at StackBros</p>
+                                <p class="mb-0 small">{{auth()->user()->type}}</p>
                             </div>
                         </div>
                         <!-- Card feed action dropdown START -->
-                        <div class="dropdown">
+                        {{--<div class="dropdown">
                             <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots"></i>
                             </a>
@@ -83,16 +86,17 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#"> <i class="bi bi-flag fa-fw pe-2"></i>Report post</a></li>
                             </ul>
-                        </div>
+                        </div>--}}
                         <!-- Card feed action dropdown END -->
                     </div>
                 </div>
                 <!-- Card header END -->
                 <!-- Card body START -->
                 <div class="card-body">
-                    <p>I'm thrilled to share that I've completed a graduate certificate course in project management with the president's honor roll.</p>
+                    <p>{{$post->body}}</p>
                     <!-- Card img -->
-                    <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
+                    <img class="card-img"
+                         src="{{asset($post->pathPhoto)}}" alt="post photo">
                     <!-- Feed react START -->
                     <ul class="nav nav-stack py-3 small">
                         <li class="nav-item">
@@ -120,34 +124,29 @@
                     </ul>
                     <!-- Feed react END -->
 
-                    <!-- Add comment -->
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar avatar-xs me-2">
-                            <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt=""> </a>
-                        </div>
-                        <!-- Comment box  -->
-                        <form class="position-relative w-100">
-                            <textarea class="form-control pe-4 bg-light" rows="1" placeholder="Add a comment..."></textarea>
-                        </form>
-                    </div>
                     <!-- Comment wrap START -->
                     <ul class="comment-wrap list-unstyled">
                         <!-- Comment item START -->
-                        <li class="comment-item">
+                        @foreach($post->comments as $comment)
+                            <li class="comment-item">
                             <div class="d-flex position-relative">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs">
-                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
+                                    <a href="#!">
+                                        <img class="avatar-img rounded-circle"
+                                             src="{{asset($comment->user->pathPhoto)}}" alt="avatar">
+                                    </a>
                                 </div>
                                 <div class="ms-2">
                                     <!-- Comment by -->
                                     <div class="bg-light rounded-start-top-0 p-3 rounded">
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="mb-1"> <a href="#!"> Frances Guerrero </a></h6>
-                                            <small class="ms-2">5hr</small>
+                                            <h6 class="mb-1"> <a href="#!"> {{$comment->user->username}} </a></h6>
+                                            <small class="ms-2">{{$comment->created_at->diffForHumans()}}</small>
                                         </div>
-                                        <p class="small mb-0">Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection.</p>
+                                        <p class="small mb-0">
+                                            {{$comment->body}}
+                                        </p>
                                     </div>
                                     <!-- Comment react -->
                                     <ul class="nav nav-divider py-2 small">
@@ -235,9 +234,10 @@
                             </a>
                             <!-- Comment item nested END -->
                         </li>
+                        @endforeach
                         <!-- Comment item END -->
                         <!-- Comment item START -->
-                        <li class="comment-item">
+                        {{--<li class="comment-item">
                             <div class="d-flex">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xs">
@@ -266,7 +266,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </li>
+                        </li>--}}
                         <!-- Comment item END -->
                     </ul>
                     <!-- Comment wrap END -->
@@ -287,9 +287,10 @@
                 <!-- Card footer END -->
             </div>
             <!-- Card feed item END -->
+            @endforeach
 
             <!-- Card feed item START -->
-            <div class="card">
+            {{--<div class="card">
 
                 <div class="border-bottom">
                     <p class="small mb-0 px-4 py-2"><i class="bi bi-heart-fill text-danger pe-1"></i>Sam Lanson likes this post</p>
@@ -374,7 +375,7 @@
                     <!-- Feed react END -->
                 </div>
                 <!-- Card Footer END -->
-            </div>
+            </div>--}}
             <!-- Card feed item END -->
         </div>
         <!-- Main content END -->
