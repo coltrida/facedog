@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="rounded border px-3 py-2 mb-3">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h6>Overview</h6>
+                            <h6>Description</h6>
                             <div class="dropdown ms-auto">
                                 <!-- Card share action menu -->
                                 <a class="nav nav-link text-secondary mb-0" href="#" id="aboutAction" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,12 +26,17 @@
                                 </a>
                                 <!-- Card share action dropdown menu -->
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction">
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                            <i class="bi bi-pencil-square fa-fw pe-2">
+                                            </i>Edit</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance. </p>
+                        <p>
+                            {{auth()->user()->description}}
+                        </p>
                     </div>
                     <div class="row g-4">
                         <div class="col-sm-6">
@@ -39,7 +44,7 @@
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
                                 <p class="mb-0">
-                                    <i class="bi bi-calendar-date fa-fw me-2"></i> Born: <strong> October 20, 1990 </strong>
+                                    <i class="bi bi-calendar-date fa-fw me-2"></i> Born: <strong> {{auth()->user()->birthdate}} </strong>
                                 </p>
                                 <div class="dropdown ms-auto">
                                     <!-- Card share action menu -->
@@ -48,8 +53,12 @@
                                     </a>
                                     <!-- Card share action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction2">
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                                <i class="bi bi-pencil-square fa-fw pe-2"></i>
+                                                Edit
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -60,7 +69,7 @@
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
                                 <p class="mb-0">
-                                    <i class="bi bi-heart fa-fw me-2"></i> Status: <strong> Single </strong>
+                                    <i class="bi bi-phone fa-fw me-2"></i> Phone: <strong> {{auth()->user()->phone}} </strong>
                                 </p>
                                 <div class="dropdown ms-auto">
                                     <!-- Card share action menu -->
@@ -69,8 +78,12 @@
                                     </a>
                                     <!-- Card share action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction3">
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                                <i class="bi bi-pencil-square fa-fw pe-2"></i>
+                                                Edit
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -81,7 +94,7 @@
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
                                 <p class="mb-0">
-                                    <i class="bi bi-briefcase fa-fw me-2"></i> <strong> Lead Developer </strong>
+                                    <i class="bi bi-bug fa-fw me-2"></i> <strong> {{auth()->user()->type}} </strong>
                                 </p>
                                 <div class="dropdown ms-auto">
                                     <!-- Card share action menu -->
@@ -90,8 +103,12 @@
                                     </a>
                                     <!-- Card share action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction4">
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                                <i class="bi bi-pencil-square fa-fw pe-2"></i>
+                                                Edit
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -102,7 +119,7 @@
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
                                 <p class="mb-0">
-                                    <i class="bi bi-geo-alt fa-fw me-2"></i> Lives in: <strong> New Hampshire </strong>
+                                    <i class="bi bi-geo-alt fa-fw me-2"></i> Lives in: <strong> {{auth()->user()->city}} </strong>
                                 </p>
                                 <div class="dropdown ms-auto">
                                     <!-- Card share action menu -->
@@ -111,14 +128,18 @@
                                     </a>
                                     <!-- Card share action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction5">
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                                <i class="bi bi-pencil-square fa-fw pe-2"></i>
+                                                Edit
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Lives END -->
                         </div>
-                        <div class="col-sm-6">
+                        {{--<div class="col-sm-6">
                             <!-- Joined on START -->
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
@@ -138,13 +159,13 @@
                                 </div>
                             </div>
                             <!-- Joined on END -->
-                        </div>
+                        </div>--}}
                         <div class="col-sm-6">
                             <!-- Joined on START -->
                             <div class="d-flex align-items-center rounded border px-3 py-2">
                                 <!-- Date -->
                                 <p class="mb-0">
-                                    <i class="bi bi-envelope fa-fw me-2"></i> Email: <strong> example@abc.com </strong>
+                                    <i class="bi bi-envelope fa-fw me-2"></i> Email: <strong> {{auth()->user()->email}} </strong>
                                 </p>
                                 <div class="dropdown ms-auto">
                                     <!-- Card share action menu -->
@@ -153,14 +174,18 @@
                                     </a>
                                     <!-- Card share action dropdown menu -->
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutAction7">
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"> <i class="bi bi-trash fa-fw pe-2"></i>Delete</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('settings')}}" wire:navigate>
+                                                <i class="bi bi-pencil-square fa-fw pe-2"></i>
+                                                Edit
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Joined on END -->
                         </div>
-                        <div class="col-sm-6 position-relative">
+                        {{--<div class="col-sm-6 position-relative">
                             <!-- Workplace on START -->
                             <a class="btn btn-dashed rounded w-100" href="#!"> <i class="bi bi-plus-circle-dotted me-1"></i>Add a workplace</a>
                             <!-- Workplace on END -->
@@ -169,7 +194,7 @@
                             <!-- Education on START -->
                             <a class="btn btn-dashed rounded w-100" href="#!"> <i class="bi bi-plus-circle-dotted me-1"></i>Add a education</a>
                             <!-- Education on END -->
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
                 <!-- Card body END -->
@@ -177,7 +202,7 @@
             <!-- Card feed item END -->
 
             <!-- Card feed item START -->
-            <div class="card">
+            {{--<div class="card">
                 <!-- Card header START -->
                 <div class="card-header d-sm-flex justify-content-between border-0 pb-0">
                     <h5 class="card-title">Interests</h5>
@@ -255,7 +280,7 @@
                     </div>
                 </div>
                 <!-- Card body END -->
-            </div>
+            </div>--}}
             <!-- Card feed item END -->
 
         </div>

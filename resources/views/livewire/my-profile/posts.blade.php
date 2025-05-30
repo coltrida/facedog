@@ -8,46 +8,7 @@
             <!-- My profile END -->
 
             <!-- Share feed START -->
-           {{-- <div class="card card-body">
-                <div class="d-flex mb-3">
-                    <!-- Avatar -->
-                    <div class="avatar avatar-xs me-2">
-                        <a href="#"> <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt=""> </a>
-                    </div>
-                    <!-- Post input -->
-                    <form class="w-100">
-                        <input class="form-control pe-4 border-0" placeholder="Share your thoughts..." data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
-                    </form>
-                </div>
-                <!-- Share feed toolbar START -->
-                <ul class="nav nav-pills nav-stack small fw-normal">
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionVideo"> <i class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link bg-light py-1 px-2 mb-0" data-bs-toggle="modal" data-bs-target="#modalCreateEvents"> <i class="bi bi-calendar2-event-fill text-danger pe-2"></i>Event </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#modalCreateFeed"> <i class="bi bi-emoji-smile-fill text-warning pe-2"></i>Feeling /Activity</a>
-                    </li>
-                    <li class="nav-item dropdown ms-sm-auto">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </a>
-                        <!-- Dropdown menu -->
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a poll</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Ask a question </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Help</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <!-- Share feed toolbar END -->
-            </div>--}}
+            <livewire:component.modal-actions />
             <!-- Share feed END -->
 
             @foreach($myPosts as $post)
@@ -137,7 +98,7 @@
                                              src="{{asset($comment->user->pathPhoto)}}" alt="avatar">
                                     </a>
                                 </div>
-                                <div class="ms-2">
+                                <div class="ms-2" style="width: 100%">
                                     <!-- Comment by -->
                                     <div class="bg-light rounded-start-top-0 p-3 rounded">
                                         <div class="d-flex justify-content-between">
@@ -165,20 +126,26 @@
                             <!-- Comment item nested START -->
                             <ul class="comment-item-nested list-unstyled">
                                 <!-- Comment item START -->
-                                <li class="comment-item">
+                                @foreach($comment->replies as $reply)
+                                    <li class="comment-item">
                                     <div class="d-flex">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xs">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt=""></a>
+                                            <a href="#!">
+                                                <img class="avatar-img rounded-circle"
+                                                              src="{{asset($reply->user->pathPhoto)}}" alt="avatar">
+                                            </a>
                                         </div>
                                         <!-- Comment by -->
-                                        <div class="ms-2">
+                                        <div class="ms-2" style="width: 100%">
                                             <div class="bg-light p-3 rounded">
                                                 <div class="d-flex justify-content-between">
-                                                    <h6 class="mb-1"> <a href="#!"> Lori Stevens </a> </h6>
-                                                    <small class="ms-2">2hr</small>
+                                                    <h6 class="mb-1"> <a href="#!"> {{$reply->user->username}} </a> </h6>
+                                                    <small class="ms-2">{{$reply->created_at->diffForHumans()}}</small>
                                                 </div>
-                                                <p class="small mb-0">See resolved goodness felicity shy civility domestic had but Drawings offended yet answered Jennings perceive.</p>
+                                                <p class="small mb-0">
+                                                   {{$reply->body}}
+                                                </p>
                                             </div>
                                             <!-- Comment react -->
                                             <ul class="nav nav-divider py-2 small">
@@ -192,9 +159,10 @@
                                         </div>
                                     </div>
                                 </li>
+                                @endforeach
                                 <!-- Comment item END -->
                                 <!-- Comment item START -->
-                                <li class="comment-item">
+                                {{--<li class="comment-item">
                                     <div class="d-flex">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-story avatar-xs">
@@ -220,7 +188,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </li>
+                                </li>--}}
                                 <!-- Comment item END -->
                             </ul>
                             <!-- Load more replies -->
@@ -403,3 +371,19 @@
 
     </div> <!-- Row END -->
 </div>
+
+
+@script
+<script>
+    Livewire.on('updatePosts', () => {
+        Swal.fire({
+            title: 'Done!',
+            text: 'Post Created',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    });
+
+</script>
+@endscript

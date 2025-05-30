@@ -9,10 +9,12 @@ use Livewire\Component;
 class HomeFace extends Component
 {
     public $version;
+    public $posts;
 
-    public function mount()
+    public function mount(PostService $postService)
     {
         $this->version = now()->timestamp;
+        $this->posts = $postService->listPost();
     }
 
     #[On('updateMyPic')]
@@ -22,11 +24,15 @@ class HomeFace extends Component
         $this->version = now()->timestamp;
     }
 
+    #[On('updatePosts')]
+    public function updatePost(PostService $postService)
+    {
+        $this->posts = $postService->listPost();
+    }
+
 
     public function render(PostService $postService)
     {
-        return view('livewire.home-face', [
-            'posts' => $postService->listPost()
-        ]);
+        return view('livewire.home-face');
     }
 }

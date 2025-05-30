@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CommentSeeder::class);
         $this->call(ReplySeeder::class);
+        $this->call(FollowerSeeder::class);
 
         Storage::disk('public')->deleteDirectory('/users/');
         Storage::disk('public')->deleteDirectory('/posts/');

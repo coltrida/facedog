@@ -26,7 +26,9 @@ class PostService
     {
         return User::with(['posts' => function($p){
             $p->with(['comments' => function($c){
-                $c->with('user', 'replies');
+                $c->with(['user', 'replies' => function($r){
+                    $r->with('user');
+                }]);
             }])
                 ->latest();
         }])
@@ -49,5 +51,10 @@ class PostService
     public function deletePost($idPost)
     {
         return Post::find($idPost)->delete();
+    }
+
+    public function createPost($request)
+    {
+        return Post::create($request->all());
     }
 }

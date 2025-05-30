@@ -18,6 +18,7 @@ class Settings extends Component
     public $description;
     public $email;
     public $type;
+    public $city;
 
     public $currentPassword;
     public $newPassword;
@@ -33,6 +34,7 @@ class Settings extends Component
         $this->description = auth()->user()->description;
         $this->email = auth()->user()->email;
         $this->type = auth()->user()->type;
+        $this->city = auth()->user()->city;
     }
 
     public function cambiaDati(UserService $userService)
@@ -46,6 +48,7 @@ class Settings extends Component
             'phone' => $this->phone,
             'description' => $this->description,
             'type' => $this->type,
+            'city' => $this->city,
         ]);
 
         $res = $userService->aggiornaDati($request);

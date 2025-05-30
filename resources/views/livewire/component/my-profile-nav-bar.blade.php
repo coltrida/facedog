@@ -20,11 +20,7 @@
                 <!-- Avatar -->
                 <div class="avatar avatar-xxl mt-n5 mb-3">
                     <img class="avatar-img rounded-circle border border-white border-3"
-                         @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
-                            src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt="">
-                         @else
-                            src="{{asset('/img/user.png')}}"
-                         @endif
+                         src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
                 </div>
             </div>
             <div class="ms-sm-4 mt-sm-3">
@@ -87,7 +83,7 @@
                                 x-on:livewire-upload-progress="progress = $event.detail.progress"
                             >
                             <!-- Dropzone photo START -->
-                            <label class="form-label">Upload Photos or Videos</label>
+                            <label class="form-label">Upload Photo</label>
                             {{--<div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
                                 <div class="dz-message">
                                     <i class="fa-solid fa-folder-open display-3"></i>

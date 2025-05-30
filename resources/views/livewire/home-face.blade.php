@@ -34,12 +34,7 @@
                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                         <a href="#!">
                                             <img class="avatar-img rounded border border-gray-300"
-                                                 @if(\Illuminate\Support\Facades\Storage::disk('public')->exists('/profiles/'.auth()->user()->id.'.jpg'))
-                                                    src="{{asset('/storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt=""
-                                                 @else
-                                                     src="{{asset('/img/user.png')}}"
-                                                @endif
-                                            >
+                                                 src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
                                         </a>
                                     </div>
                                     <!-- Info -->
@@ -141,7 +136,7 @@
         <div class="col-md-8 col-lg-6 vstack gap-4">
 
             <!-- Story START -->
-            <div class="d-flex gap-2 mb-n3">
+            <div class="d-flex gap-2 mb-n3" wire:ignore>
                 <div class="position-relative">
                     <div class="card border border-2 border-dashed h-150px px-4 px-sm-5 shadow-none d-flex align-items-center justify-content-center text-center">
                         <div>
@@ -157,49 +152,7 @@
             <!-- Story END -->
 
             <!-- Share feed START -->
-            <div class="card card-body">
-                <div class="d-flex mb-3">
-                    <!-- Avatar -->
-                    <div class="avatar avatar-xs me-2">
-                        <a href="#"> <img class="avatar-img rounded-circle"
-                                          src="{{asset('storage/profiles/'.auth()->id().'.jpg')}}?v={{ $version }}" alt=""> </a>
-                    </div>
-                    <!-- Post input -->
-                    <form class="w-100">
-                        <textarea class="form-control pe-4 border-0" rows="2" data-autoresize placeholder="Share your thoughts..."></textarea>
-                    </form>
-                </div>
-                <!-- Share feed toolbar START -->
-                <ul class="nav nav-pills nav-stack small fw-normal">
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionVideo"> <i class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link bg-light py-1 px-2 mb-0" data-bs-toggle="modal" data-bs-target="#modalCreateEvents"> <i class="bi bi-calendar2-event-fill text-danger pe-2"></i>Event </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#modalCreateFeed"> <i class="bi bi-emoji-smile-fill text-warning pe-2"></i>Feeling /Activity</a>
-                    </li>
-                    {{--<li class="nav-item dropdown ms-lg-auto">
-                        <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots"></i>
-                        </a>
-                        <!-- Dropdown menu -->
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a poll</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Ask a question </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Help</a></li>
-                        </ul>
-                    </li>--}}
-                </ul>
-                <!-- Share feed toolbar END -->
-            </div>
+            <livewire:component.modal-actions />
             <!-- Share feed END -->
 
             <!-- Card feed item START -->
@@ -211,7 +164,10 @@
                         <div class="d-flex align-items-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-story me-2">
-                                <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""> </a>
+                                <a href="#!">
+                                    <img class="avatar-img rounded-circle"
+                                         src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
+                                </a>
                             </div>
                             <!-- Info -->
                             <div>
@@ -247,7 +203,8 @@
                 <div class="card-body">
                     <p>{{$post->body}}</p>
                     <!-- Card img -->
-                    <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
+                    <img class="card-img"
+                         src="{{asset($post->pathPhoto)}}" alt="post">
                     <!-- Feed react START -->
                     <ul class="nav nav-stack py-3 small">
                         <li class="nav-item">
@@ -1775,3 +1732,18 @@
 
     </div> <!-- Row END -->
 </div>
+
+@script
+<script>
+    Livewire.on('updatePosts', () => {
+        Swal.fire({
+            title: 'Fatto!',
+            text: 'Post Created',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    });
+
+</script>
+@endscript

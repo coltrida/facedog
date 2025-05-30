@@ -73,4 +73,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Album::class);
     }
+
+    /**
+     * The users that this user is following.
+     */
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id');
+    }
+
+    /**
+     * The users that are following this user.
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id');
+    }
 }

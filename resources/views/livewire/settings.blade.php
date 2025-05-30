@@ -143,14 +143,19 @@
                                     <input type="text" class="form-control" wire:model="type" placeholder="">
                                 </div>
                                 <!-- User name -->
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 col-lg-4">
                                     <label class="form-label">User name</label>
                                     <input type="text" class="form-control" wire:model="username" placeholder="">
                                 </div>
                                 <!-- Birthday -->
-                                <div class="col-lg-6">
+                                <div class="col-sm-6 col-lg-4">
                                     <label class="form-label">Birthday </label>
                                     <input type="text" class="form-control flatpickr" wire:model="birthdate">
+                                </div>
+                                <!-- City -->
+                                <div class="col-sm-6 col-lg-4">
+                                    <label class="form-label">City </label>
+                                    <input type="text" class="form-control" wire:model="city" placeholder="">
                                 </div>
                                 <!-- Allow checkbox -->
                                 <div class="col-12">

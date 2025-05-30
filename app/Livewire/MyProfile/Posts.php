@@ -9,10 +9,12 @@ use Livewire\Component;
 class Posts extends Component
 {
     public $version;
+    public $myPosts;
 
-    public function mount()
+    public function mount(PostService $postService)
     {
         $this->version = now()->timestamp;
+        $this->myPosts = $postService->myPostsWithComments(auth()->id());
     }
 
     #[On('updateMyPic')]
@@ -22,10 +24,14 @@ class Posts extends Component
         $this->version = now()->timestamp;
     }
 
+    #[On('updatePosts')]
+    public function updatePost(PostService $postService)
+    {
+        $this->myPosts = $postService->myPostsWithComments(auth()->id());
+    }
+
     public function render(PostService $postService)
     {
-        return view('livewire.my-profile.posts', [
-            'myPosts' => $postService->myPostsWithComments(auth()->id())
-        ]);
+        return view('livewire.my-profile.posts');
     }
 }
