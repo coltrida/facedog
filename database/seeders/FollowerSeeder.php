@@ -14,12 +14,22 @@ class FollowerSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::with('followers')->find(2);
+        $user = User::find(2);
         $user->followers()->attach(3, [
             'created_at' => Carbon::now()->subDays(3)
         ]);
         $user->followers()->attach(4, [
             'created_at' => Carbon::now()
+        ]);
+
+        $user = User::find(5);
+        $user->followers()->attach(2, [
+            'created_at' => Carbon::now()->subDays(3)
+        ]);
+
+        $user = User::find(6);
+        $user->followers()->attach(2, [
+            'created_at' => Carbon::now()->subDays(3)
         ]);
     }
 }

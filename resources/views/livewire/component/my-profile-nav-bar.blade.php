@@ -36,9 +36,9 @@
         </div>
         <!-- List myProfile -->
         <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
-            <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> Lead Developer</li>
-            <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> New Hampshire</li>
-            <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> Joined on Nov 26, 2019</li>
+            <li class="list-inline-item"><i class="bi bi-bug me-1"></i>{{auth()->user()->type}}</li>
+            <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i>{{auth()->user()->city}}</li>
+            <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> Joined at {{auth()->user()->created_at->format('m/d/Y')}}</li>
         </ul>
     </div>
     <!-- Card body END -->

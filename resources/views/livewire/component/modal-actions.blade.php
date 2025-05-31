@@ -15,6 +15,9 @@
         <!-- Share feed toolbar START -->
         <ul class="nav nav-pills nav-stack small fw-normal">
             <li class="nav-item">
+                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPost"> <i class="bi bi-postcard text-success pe-2"></i>Post</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
             </li>
             <li class="nav-item">
@@ -105,13 +108,13 @@
     </div>
     <!-- Modal create feed END -->
 
-    <!-- Modal create Feed photo START -->
-    <div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel" aria-hidden="true" wire:ignore.self>
+    <!-- Modal create Feed post START -->
+    <div class="modal fade" id="feedActionPost" tabindex="-1" aria-labelledby="feedActionPostLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <!-- Modal feed header START -->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="feedActionPhotoLabel">Add post photo</h5>
+                    <h5 class="modal-title" id="feedActionPostLabel">Add post</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!-- Modal feed header END -->
@@ -158,6 +161,86 @@
                         </div>
                         <!-- Dropzone photo END -->
 
+                    </div>
+                    <!-- Modal feed body END -->
+
+                    <!-- Modal feed footer -->
+                    <div class="modal-footer ">
+                        @if($photo)
+                            <img src="{{$photo->temporaryUrl()}}" alt="" class="rounded" >
+                        @endif
+                        <!-- Button -->
+                        <button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success-soft" data-bs-dismiss="modal">Post</button>
+                    </div>
+                </form>
+                <!-- Modal feed footer -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal create Feed photo END -->
+
+    <!-- Modal create Feed photo START -->
+    <div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoPostLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal feed header START -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedActionPhotoPostLabel">Add photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal feed header END -->
+
+                <!-- Modal feed body START -->
+                <form wire:submit="savePhoto">
+                    <div class="modal-body">
+                        <!-- Add Feed -->
+                        <div class="d-flex mb-3">
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs me-2">
+                                <img class="avatar-img rounded-circle"
+                                     src="{{asset(auth()->user()->pathPhoto)}}?v={{ $version }}" alt="avatar">
+                            </div>
+                            <!-- Feed box  -->
+                            <div class="w-100">
+                                <textarea
+                                    class="form-control pe-4 fs-3 lh-1 border-0"
+                                    rows="2"
+                                    placeholder="Share your thoughts..."
+                                    wire:model="bodyPost"
+                                >
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <!-- Dropzone photo START -->
+                        <div>
+                            <div
+                                x-data="{ uploading: false, progress: 0 }"
+                                x-on:livewire-upload-start="uploading = true"
+                                x-on:livewire-upload-finish="uploading = false"
+                                x-on:livewire-upload-cancel="uploading = false"
+                                x-on:livewire-upload-error="uploading = false"
+                                x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
+                                <!-- Dropzone photo START -->
+                                <label class="form-label">Upload Photos</label>
+                                <input type="file" class="form-control" wire:model="photo" placeholder="">
+                                <div x-show="uploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dropzone photo END -->
+                        <div class="col-lg-3 mt-3">
+                            <select wire:modal="album_id" class="form-select js-choice choice-select-text-none" data-position="top" data-search-enabled="false">
+                                <option value="">Album</option>
+                                @foreach($myAlbums as $album)
+                                    <option value="{{$album->id}}">{{$album->title}}</option>
+                                @endforeach
+                            </select>
+                            <!-- Button -->
+                        </div>
                     </div>
                     <!-- Modal feed body END -->
 

@@ -823,7 +823,7 @@
                 <!-- Card END -->
 
                 <!-- Card START -->
-                @include('partials.my-profile-friends')
+                <livewire:component.my-profile-friends />
                 <!-- Card END -->
             </div>
         </div>

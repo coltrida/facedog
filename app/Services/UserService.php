@@ -17,4 +17,28 @@ class UserService
             'password' => $newPassword
         ]);
     }
+
+    public function myLastFourFriends($idUser)
+    {
+        return User::with(['followers' => function($f){
+            $f->latest()->take(4);
+        }])
+            ->find($idUser)->followers;
+    }
+
+    public function myLastFiveFriends($idUser)
+    {
+        return User::with(['followers' => function($f){
+            $f->latest()->take(5);
+        }])
+            ->find($idUser)->followers;
+    }
+
+    public function myLastFiveFollowings($idUser)
+    {
+        return User::with(['following' => function($f){
+            $f->latest()->take(5);
+        }])
+            ->find($idUser)->following;
+    }
 }

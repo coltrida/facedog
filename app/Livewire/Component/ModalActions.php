@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Component;
 
+use App\Services\AlbumService;
+use App\Services\PhotoService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use Livewire\Attributes\On;
@@ -17,11 +19,15 @@ class ModalActions extends Component
     public $photo;
 
     public $bodyPost;
+    public $bodyPhoto;
+    public $album_id;
     public $version;
+    public $myAlbums;
 
-    public function mount()
+    public function mount(AlbumService $albumService)
     {
         $this->version = now()->timestamp;
+        $this->myAlbums = $albumService->myAlbums(auth()->id());
     }
 
     #[On('updateMyPic')]
@@ -49,6 +55,28 @@ class ModalActions extends Component
         $this->photo->storeAs('posts', $filename);
 
         $this->reset(['photo', 'bodyPost']);
+
+        $this->dispatch('updatePosts');
+    }
+
+    public function savePhoto(PhotoService $photoService)
+    {
+        $this->validate([
+            'photo' => 'image|max:2048', // 2MB Max
+        ]);
+
+        $request = new Request();
+        $request->merge([
+            'album_id' => $this->album_id,
+            'body' => $this->bodyPhoto
+        ]);
+
+        $photo = $photoService->savePhoto($request);
+
+        $filename = '/'.$this->album_id.'/'.$photo->id. '.jpg';
+        $this->photo->storeAs('albums', $filename);
+
+        $this->reset(['photo', 'bodyPhoto', 'album_id']);
 
         $this->dispatch('updatePosts');
     }

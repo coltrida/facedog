@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'type' => Arr::random(['gatto rosso', 'pesce rosso', 'cane boxer', 'topo grigio',
                 'cane lessie', 'cane bassotto', 'gatto felix', 'gatto persiano', 'cane ciuaua', 'gatto nero']),
             'birthdate' => fake()->date(),
+            'city' => fake()->city(),
             'description' => fake()->realText(50),
             'phone' => fake()->phoneNumber(),
             'role' => 'user',

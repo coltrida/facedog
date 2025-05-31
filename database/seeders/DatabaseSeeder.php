@@ -25,15 +25,14 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentSeeder::class);
         $this->call(ReplySeeder::class);
         $this->call(FollowerSeeder::class);
+        $this->call(AlbumSeeder::class);
 
-        Storage::disk('public')->deleteDirectory('/users/');
-        Storage::disk('public')->deleteDirectory('/posts/');
         Storage::disk('public')->deleteDirectory('/posts/');
         Storage::disk('public')->deleteDirectory('/albums/');
         Storage::disk('public')->deleteDirectory('/profiles/');
         Storage::disk('public')->deleteDirectory('/landscapes/');
         Storage::disk('public')->deleteDirectory('/livewire-tmp/');
-        Storage::disk('public')->makeDirectory('/users');
+
         Storage::disk('public')->makeDirectory('/posts');
         Storage::disk('public')->makeDirectory('/albums');
         Storage::disk('public')->makeDirectory('/profiles');
@@ -45,5 +44,8 @@ class DatabaseSeeder extends Seeder
         Storage::disk('public')->put('/posts/1.jpg', $fileContent);
         $fileContent = Storage::disk('local')->get('/posts/2.jpg');
         Storage::disk('public')->put('/posts/2.jpg', $fileContent);
+
+        $fileContent = Storage::disk('local')->get('/profiles/2.jpg');
+        Storage::disk('public')->put('/profiles/2.jpg', $fileContent);
     }
 }
