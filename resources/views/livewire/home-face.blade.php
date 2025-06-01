@@ -1735,10 +1735,10 @@
 
 @script
 <script>
-    Livewire.on('updatePosts', () => {
+    Livewire.on('updatePosts', message => {
         Swal.fire({
             title: 'Fatto!',
-            text: 'Post Created',
+            text: message,
             icon: 'success',
             timer: 2000,
             showConfirmButton: false

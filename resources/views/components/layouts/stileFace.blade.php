@@ -95,7 +95,7 @@
 
 </head>
 
-<body>
+<body wire:navigate.prefetch>
 
 <!-- =======================
 Header START -->

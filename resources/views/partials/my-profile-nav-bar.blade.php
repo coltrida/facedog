@@ -45,42 +45,4 @@
             <li class="nav-item"> <a class="nav-link" href="my-profile-activity.html"> Activity</a> </li>--}}
         </ul>
     </div>
-
-
-
-    <!-- Modal create album START -->
-    <div class="modal fade" id="modalCreateAlbum" tabindex="-1" aria-labelledby="modalLabelCreateAlbum" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal header -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabelCreateAlbum">Create album</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form START -->
-                    <form>
-                        <!-- Upload Photos or Videos -->
-                        <div class="mb-3">
-                            <!-- Dropzone photo START -->
-                            <label class="form-label">Upload Photos or Videos</label>
-                            <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
-                                <div class="dz-message">
-                                    <i class="fa-solid fa-folder-open display-3"></i>
-                                    <p>Drop image here or click to upload.</p>
-                                </div>
-                            </div>
-                            <!-- Dropzone photo END -->
-                        </div>
-                    </form>
-                    <!-- Form END -->
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success-soft">Update Main Photo</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal create album END -->
 </div>

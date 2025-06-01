@@ -408,7 +408,7 @@
                 <!-- Card END -->
 
                 <!-- Card START -->
-                @include('partials.my-profile-photos')
+                <livewire:component.my-profile-random-photos />
                 <!-- Card END -->
 
                 <!-- Card START -->

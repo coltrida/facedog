@@ -56,7 +56,7 @@ class ModalActions extends Component
 
         $this->reset(['photo', 'bodyPost']);
 
-        $this->dispatch('updatePosts');
+        $this->dispatch('updatePosts', 'post saved');
     }
 
     public function savePhoto(PhotoService $photoService)
@@ -78,7 +78,7 @@ class ModalActions extends Component
 
         $this->reset(['photo', 'bodyPhoto', 'album_id']);
 
-        $this->dispatch('updatePosts');
+        $this->dispatch('updatePosts', 'photo saved');
     }
 
     public function render()

@@ -22,7 +22,7 @@ class AlbumService
     public function myAlbums($idUser)
     {
         return User::with(['albums' => function($a){
-            $a->latest();
+            $a->with('photos')->latest();
         }])->find($idUser)->albums;
     }
 

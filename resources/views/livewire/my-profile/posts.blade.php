@@ -358,7 +358,7 @@
                 <!-- Card END -->
 
                 <!-- Card START -->
-                @include('partials.my-profile-photos')
+                <livewire:component.my-profile-random-photos />
                 <!-- Card END -->
 
                 <!-- Card START -->
@@ -375,10 +375,10 @@
 
 @script
 <script>
-    Livewire.on('updatePosts', () => {
+    Livewire.on('updatePosts', message => {
         Swal.fire({
             title: 'Done!',
-            text: 'Post Created',
+            text: message,
             icon: 'success',
             timer: 2000,
             showConfirmButton: false

@@ -46,15 +46,15 @@
         <!-- Nav myProfile pages -->
         <ul class="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0">
             <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/posts' ? 'active' : '' }}"
-                                     href="{{route('myProfile.posts')}}" > Posts </a> </li>
+                                     href="{{route('myProfile.posts')}}" wire:navigate> Posts </a> </li>
             <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/about' ? 'active' : '' }}"
-                                     href="{{route('myProfile.about')}}" > About </a> </li>
+                                     href="{{route('myProfile.about')}}" wire:navigate> About </a> </li>
             <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/connections' ? 'active' : '' }}"
-                                     href="{{route('myProfile.connections')}}" > Connections <span class="badge bg-success bg-opacity-10 text-success small"> 230</span> </a> </li>
-            <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/photos' ? 'active' : '' }}"
-                                     href="{{route('myProfile.photos')}}" > Photos</a> </li>
+                                     href="{{route('myProfile.connections')}}" wire:navigate> Connections <span class="badge bg-success bg-opacity-10 text-success small"> 230</span> </a> </li>
+            <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/albums' ? 'active' : '' }}"
+                                     href="{{route('myProfile.albums')}}" wire:navigate> Albums</a> </li>
             <li class="nav-item"> <a class="nav-link {{ request()->path() == 'myProfile/videos' ? 'active' : '' }}"
-                                     href="{{route('myProfile.videos')}}" > Videos</a> </li>
+                                     href="{{route('myProfile.videos')}}" wire:navigate> Videos</a> </li>
             {{--<li class="nav-item"> <a class="nav-link" href="my-profile-events.html"> Events</a> </li>
             <li class="nav-item"> <a class="nav-link" href="my-profile-activity.html"> Activity</a> </li>--}}
         </ul>

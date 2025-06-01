@@ -15,7 +15,8 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/myProfile/connections', 'pages.myProfile.connections')->name('myProfile.connections');
     Route::view('/myProfile/posts', 'pages.myProfile.posts')->name('myProfile.posts');
     Route::view('/myProfile/about', 'pages.myProfile.about')->name('myProfile.about');
-    Route::view('/myProfile/photos', 'pages.myProfile.photos')->name('myProfile.photos');
+    Route::view('/myProfile/albums', 'pages.myProfile.albums')->name('myProfile.albums');
+    Route::view('/myProfile/photos/{idAlbum}', 'pages.myProfile.photos')->name('myProfile.photos');
     Route::view('/myProfile/videos', 'pages.myProfile.videos')->name('myProfile.videos');
 
     // --------------------------           ------------------------- //

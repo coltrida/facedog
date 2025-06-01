@@ -207,7 +207,7 @@
                                     class="form-control pe-4 fs-3 lh-1 border-0"
                                     rows="2"
                                     placeholder="Share your thoughts..."
-                                    wire:model="bodyPost"
+                                    wire:model="bodyPhoto"
                                 >
                                 </textarea>
                             </div>
@@ -232,8 +232,8 @@
                             </div>
                         </div>
                         <!-- Dropzone photo END -->
-                        <div class="col-lg-3 mt-3">
-                            <select wire:modal="album_id" class="form-select js-choice choice-select-text-none" data-position="top" data-search-enabled="false">
+                        <div class="col-lg-6 mt-3">
+                            <select wire:model="album_id" class="form-select js-choice choice-select-text-none" data-position="top" data-search-enabled="false">
                                 <option value="">Album</option>
                                 @foreach($myAlbums as $album)
                                     <option value="{{$album->id}}">{{$album->title}}</option>

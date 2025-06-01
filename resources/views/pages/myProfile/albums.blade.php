@@ -1,4 +1,4 @@
 @extends('components.layouts.stileFace')
 @section('content')
-    <livewire:my-profile.photos :idAlbum="$idAlbum" />
+    <livewire:my-profile.albums />
 @endsection

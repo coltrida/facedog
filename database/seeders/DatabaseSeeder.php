@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ReplySeeder::class);
         $this->call(FollowerSeeder::class);
         $this->call(AlbumSeeder::class);
+        $this->call(PhotoSeeder::class);
 
         Storage::disk('public')->deleteDirectory('/posts/');
         Storage::disk('public')->deleteDirectory('/albums/');
@@ -47,5 +48,23 @@ class DatabaseSeeder extends Seeder
 
         $fileContent = Storage::disk('local')->get('/profiles/2.jpg');
         Storage::disk('public')->put('/profiles/2.jpg', $fileContent);
+
+        $fileContent = Storage::disk('local')->get('/albums/photo.jpg');
+        Storage::disk('public')->put('/albums/photo.jpg', $fileContent);
+
+        $fileContent = Storage::disk('local')->get('/albums/1/1.jpg');
+        Storage::disk('public')->put('/albums/1/1.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/1/2.jpg');
+        Storage::disk('public')->put('/albums/1/2.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/2/3.jpg');
+        Storage::disk('public')->put('/albums/2/3.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/2/4.jpg');
+        Storage::disk('public')->put('/albums/2/4.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/3/5.jpg');
+        Storage::disk('public')->put('/albums/3/5.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/3/6.jpg');
+        Storage::disk('public')->put('/albums/3/6.jpg', $fileContent);
+        $fileContent = Storage::disk('local')->get('/albums/3/7.jpg');
+        Storage::disk('public')->put('/albums/3/7.jpg', $fileContent);
     }
 }
